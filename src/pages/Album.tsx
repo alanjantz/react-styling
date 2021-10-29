@@ -61,22 +61,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = new Array(9).fill(1);
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Album: React.FC = () => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <main className={classes.root}>
+      <div className={classes.root}>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
@@ -148,9 +140,9 @@ const Album: React.FC = () => {
             ))}
           </Grid>
         </Container>
-      </main>
+      </div>
       {/* Footer */}
-      <footer className={classes.footer}>
+      <div className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
@@ -163,7 +155,7 @@ const Album: React.FC = () => {
           Something here to give the footer a purpose!
         </Typography>
         <Copyright />
-      </footer>
+      </div>
     </React.Fragment>
   );
 };

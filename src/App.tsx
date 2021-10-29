@@ -7,37 +7,54 @@ import {
 } from "@material-ui/core";
 import Left from "./components/Left";
 import Right from "./components/Right";
-import Album from "./pages/Album";
 import ThemeChanger from "./pages/ThemeChanger";
+import Tabs from "./components/Tabs";
 
-const theme = createTheme({
+export const defaultTheme = createTheme({
   palette: {
     type: "light",
   },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        "*": {
+          "scrollbar-width": "thin",
+        },
+        "*::-webkit-scrollbar": {
+          width: "4px",
+          height: "4px",
+        },
+        "*::-webkit-scrollbar-thumb": {
+          background: "rgba(0, 0, 0, 0.5)",
+        },
+      },
+    },
+  },
 });
-const App: React.FC = () => {
-  const [customTheme, setCustomTheme] = useState<Theme>(theme);
 
-  const changeTheme = useCallback((newTheme: Theme): void => {
-    console.log("chamou", newTheme);
-    setCustomTheme({ ...theme, ...newTheme });
-  }, []);
+const App: React.FC = () => {
+  const [customTheme, setCustomTheme] = useState<Theme>(defaultTheme);
+
+  const changeTheme = useCallback(
+    (newTheme: Theme): void => {
+      setCustomTheme((prevTheme) => ({ ...prevTheme, ...newTheme }));
+    },
+    [setCustomTheme]
+  );
 
   return (
-    <>
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
       <Left>
         <ThemeProvider theme={createTheme(customTheme)}>
           <CssBaseline />
-          <Album />
+          <Tabs />
         </ThemeProvider>
       </Left>
       <Right>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <ThemeChanger onThemeChange={changeTheme} />
-        </ThemeProvider>
+        <ThemeChanger onThemeChange={changeTheme} />
       </Right>
-    </>
+    </ThemeProvider>
   );
 };
 
