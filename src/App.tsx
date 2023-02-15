@@ -7,12 +7,24 @@ import {
 } from "@material-ui/core";
 import Left from "./components/Left";
 import Right from "./components/Right";
-import ThemeChanger from "./pages/ThemeChanger";
+import ThemeChanger from "./pages/ThemeChanger/ThemeChanger";
 import Tabs from "./components/Tabs";
 
 export const defaultTheme = createTheme({
   palette: {
     type: "light",
+    primary: {
+      main: "#456B8C",
+    },
+    secondary: {
+      main: "#FF638B",
+    },
+  },
+  typography: {
+    h2: {
+      fontFamily: "Arial",
+      fontSize: 60,
+    },
   },
   overrides: {
     MuiCssBaseline: {

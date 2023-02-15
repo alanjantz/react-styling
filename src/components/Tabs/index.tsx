@@ -30,19 +30,31 @@ const CustomizableApp: React.FC = () => {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Album" {...getDefaultProps(0)} />
-          <Tab label="Item Two" {...getDefaultProps(1)} />
-          <Tab label="Item Three" {...getDefaultProps(2)} />
+          <Tab
+            label="Album"
+            title="Default MUI components"
+            {...getDefaultProps(0)}
+          />
+          <Tab
+            label="Style Guid"
+            title="Custom components"
+            {...getDefaultProps(1)}
+          />
+          <Tab
+            label="Multi Theme"
+            title="Themes inside themes"
+            {...getDefaultProps(2)}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Album />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        Custom components
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Themes inside themes
       </TabPanel>
     </main>
   );

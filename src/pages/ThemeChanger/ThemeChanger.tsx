@@ -3,30 +3,24 @@ import {
   Button,
   Divider,
   FormControl,
+  MenuItem,
+  Select,
+  TextField,
   Theme,
   Typography,
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
-import { createStyles, makeStyles, useTheme } from "@material-ui/styles";
 import { HexColorPicker } from "react-colorful";
-import ThemeConfiguration from "../components/ThemeConfiguration";
-import { defaultTheme } from "../App";
+import ThemeConfiguration from "../../components/ThemeConfiguration";
+import { defaultTheme } from "../../App";
+import { useTheme } from "@material-ui/styles";
+import { useStyles } from "./styles";
+import ColorHexInput from "../../components/Inputs/ColorHexInput";
 
-interface ThemeChangerProps {
+type ThemeChangerProps = {
   onThemeChange: (newTheme: Theme) => void;
-}
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    actions: {
-      "& > *": {
-        margin: theme.spacing(1),
-        float: "right",
-      },
-    },
-  })
-);
+};
 
 const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
   const currentTheme: Theme = useTheme();
@@ -51,6 +45,13 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
     [newTheme]
   );
 
+  const onPrimaryColorTextChange = useCallback(
+    (newColor: string): void => {
+      onPrimaryColorChange(newColor);
+    },
+    [onPrimaryColorChange]
+  );
+
   const onSecondaryColorChange = useCallback(
     (newColor: string): void => {
       setNewTheme({
@@ -67,6 +68,13 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
     [newTheme]
   );
 
+  const onSecondaryColorTextChange = useCallback(
+    (newColor: string): void => {
+      onSecondaryColorChange(newColor);
+    },
+    [onSecondaryColorChange]
+  );
+
   const onBorderRadiusChange = useCallback(
     (newBorderRadius: number): void => {
       setNewTheme({
@@ -74,6 +82,38 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
         shape: {
           ...newTheme.shape,
           borderRadius: newBorderRadius,
+        },
+      });
+    },
+    [newTheme]
+  );
+
+  const onFontFamilyChange = useCallback(
+    (event: React.ChangeEvent<{ value: unknown }>): void => {
+      setNewTheme({
+        ...newTheme,
+        typography: {
+          ...newTheme.typography,
+          h2: {
+            ...newTheme.typography.h2,
+            fontFamily: event.target.value as string,
+          },
+        },
+      });
+    },
+    [newTheme]
+  );
+
+  const onFontSizeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>): void => {
+      setNewTheme({
+        ...newTheme,
+        typography: {
+          ...newTheme.typography,
+          h2: {
+            ...newTheme.typography.h2,
+            fontSize: Number(event.target.value),
+          },
         },
       });
     },
@@ -95,6 +135,10 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
               color={newTheme.palette.primary.main}
               onChange={onPrimaryColorChange}
             />
+            <ColorHexInput
+              value={newTheme.palette.primary.main.replace("#", "")}
+              onChange={onPrimaryColorTextChange}
+            />
           </Grid>
           <Grid item xs={6}>
             <Typography variant="subtitle1">
@@ -103,6 +147,32 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
             <HexColorPicker
               color={newTheme.palette.secondary.main}
               onChange={onSecondaryColorChange}
+            />
+            <ColorHexInput
+              value={newTheme.palette.secondary.main.replace("#", "")}
+              onChange={onSecondaryColorTextChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h4">Fonte</Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant="subtitle1">Tipografia (cabeçalho)</Typography>
+            <Select
+              value={newTheme.typography.h2.fontFamily}
+              onChange={onFontFamilyChange}
+            >
+              <MenuItem value="Arial">Padrão (Arial)</MenuItem>
+              <MenuItem value="cursive">Cursiva</MenuItem>
+              <MenuItem value="monospace">Monospace</MenuItem>
+            </Select>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant="subtitle1">Tamanho da fonte</Typography>
+            <TextField
+              type="number"
+              value={newTheme.typography.h2.fontSize}
+              onChange={onFontSizeChange}
             />
           </Grid>
           <Grid item xs={12}>
