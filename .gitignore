@@ -10,10 +10,7 @@
 # testing
 /coverage
 
-# gatsby
 .cache/
-public/
-
 # misc
 .DS_Store
 .env\*
