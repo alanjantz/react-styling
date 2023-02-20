@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import {
   Button,
   Divider,
-  FormControl,
+  InputLabel,
   MenuItem,
   Select,
   TextField,
@@ -98,6 +98,22 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
             ...newTheme.typography.h1,
             fontFamily: event.target.value as string,
           },
+          h2: {
+            ...newTheme.typography.h2,
+            fontFamily: event.target.value as string,
+          },
+          h3: {
+            ...newTheme.typography.h3,
+            fontFamily: event.target.value as string,
+          },
+          h4: {
+            ...newTheme.typography.h4,
+            fontFamily: event.target.value as string,
+          },
+          h5: {
+            ...newTheme.typography.h5,
+            fontFamily: event.target.value as string,
+          },
         },
       });
     },
@@ -122,104 +138,104 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
 
   return (
     <ThemeConfiguration>
-      <FormControl>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography variant="h4">Cores</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1">
-              Cor primária
-            </Typography>
-            <HexColorPicker
-              color={newTheme.palette.primary.main}
-              onChange={onPrimaryColorChange}
-            />
-            <ColorHexInput
-              value={newTheme.palette.primary.main.replace("#", "")}
-              onChange={onPrimaryColorTextChange}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1">
-              Cor secundária
-            </Typography>
-            <HexColorPicker
-              color={newTheme.palette.secondary.main}
-              onChange={onSecondaryColorChange}
-            />
-            <ColorHexInput
-              value={newTheme.palette.secondary.main.replace("#", "")}
-              onChange={onSecondaryColorTextChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h4">Fonte</Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h5">Cabeçalho (h1)</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1">Tipografia</Typography>
-            <Select
-              value={newTheme.typography.h1.fontFamily}
-              onChange={onFontFamilyChange}
-            >
-              <MenuItem value="'Montserrat', sans-serif">Montserrat (Padrão)</MenuItem>
-              <MenuItem value="'Poppins', sans-serif">Poppins</MenuItem>
-              <MenuItem value="Arial">Arial</MenuItem>
-              <MenuItem value="cursive">Cursiva</MenuItem>
-              <MenuItem value="monospace">Monospace</MenuItem>
-            </Select>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1">Tamanho da fonte</Typography>
-            <TextField
-              type="number"
-              value={newTheme.typography.h1.fontSize}
-              onChange={onFontSizeChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h4">Outros estilos</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1">Arredondamento</Typography>
-            <Slider
-              value={newTheme.shape.borderRadius}
-              onChange={(
-                event: React.ChangeEvent<{}>,
-                value: number | number[]
-              ) => onBorderRadiusChange(value as number)}
-              min={0}
-              max={50}
-              valueLabelDisplay="auto"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Divider />
-          </Grid>
-          <Grid item xs={12} className={classes.actions} alignContent="center">
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              onClick={() => onThemeChange(newTheme)}
-            >
-              Atualizar
-            </Button>
-            <Button
-              type="submit"
-              onClick={() => {
-                onThemeChange(defaultTheme);
-                setNewTheme(defaultTheme);
-              }}
-            >
-              Resetar
-            </Button>
-          </Grid>
+      <Grid container spacing={3} xs={12}>
+        <Grid item xs={12}>
+          <Typography variant="h4">Cores</Typography>
         </Grid>
-      </FormControl>
+
+        <Grid item xs={6}>
+          <InputLabel id="primary-color-label">Cor primária</InputLabel>
+          <HexColorPicker
+            color={newTheme.palette.primary.main}
+            onChange={onPrimaryColorChange}
+          />
+          <ColorHexInput
+            value={newTheme.palette.primary.main.replace("#", "")}
+            onChange={onPrimaryColorTextChange}
+            id="primary-color"
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <InputLabel id="secondary-color-label">Cor secundária</InputLabel>
+          <HexColorPicker
+            color={newTheme.palette.secondary.main}
+            onChange={onSecondaryColorChange}
+          />
+          <ColorHexInput
+            value={newTheme.palette.secondary.main.replace("#", "")}
+            onChange={onSecondaryColorTextChange}
+            id="secondary-color"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h4">Fonte</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5">Cabeçalhos</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <InputLabel id="font-family-select-label">Fonte</InputLabel>
+          <Select
+            value={newTheme.typography.h1.fontFamily}
+            onChange={onFontFamilyChange}
+            labelId="font-family-select-label"
+          >
+            <MenuItem value="'Montserrat', sans-serif">
+              Montserrat (Padrão)
+            </MenuItem>
+            <MenuItem value="'Poppins', sans-serif">Poppins</MenuItem>
+            <MenuItem value="Arial">Arial</MenuItem>
+            <MenuItem value="cursive">Cursiva</MenuItem>
+            <MenuItem value="monospace">Monospace</MenuItem>
+          </Select>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="subtitle1">Tamanho da fonte (h1)</Typography>
+          <TextField
+            type="number"
+            value={newTheme.typography.h1.fontSize}
+            onChange={onFontSizeChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h4">Outros estilos</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="subtitle1">Arredondamento</Typography>
+          <Slider
+            value={newTheme.shape.borderRadius}
+            onChange={(
+              event: React.ChangeEvent<{}>,
+              value: number | number[]
+            ) => onBorderRadiusChange(value as number)}
+            min={0}
+            max={50}
+            valueLabelDisplay="auto"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+        <Grid item xs={12} className={classes.actions} alignContent="center">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={() => onThemeChange(newTheme)}
+          >
+            Atualizar
+          </Button>
+          <Button
+            type="submit"
+            onClick={() => {
+              onThemeChange(defaultTheme);
+              setNewTheme(defaultTheme);
+            }}
+          >
+            Resetar
+          </Button>
+        </Grid>
+      </Grid>
     </ThemeConfiguration>
   );
 };

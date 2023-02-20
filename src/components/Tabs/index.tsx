@@ -25,11 +25,11 @@ const CustomizableApp: React.FC = () => {
 
   return (
     <main>
-      <AppBar position="static">
+      <AppBar position="relative">
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="simple tabs example"
+          centered
         >
           <Tab
             label="Style Guid"

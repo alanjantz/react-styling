@@ -3,11 +3,16 @@ import React, { useCallback } from "react";
 import { TextField } from "./styles";
 
 type ColorHexInputProps = {
+  id: string;
   value: string;
   onChange: (newValue: string) => void;
 };
 
-const ColorHexInput: React.FC<ColorHexInputProps> = ({ value, onChange }) => {
+const ColorHexInput: React.FC<ColorHexInputProps> = ({
+  id,
+  value,
+  onChange,
+}) => {
   const onValueChange = useCallback((newValue: string) => {
     newValue = newValue.trim();
     if (newValue.length > 6) return;
@@ -16,6 +21,8 @@ const ColorHexInput: React.FC<ColorHexInputProps> = ({ value, onChange }) => {
 
   return (
     <TextField
+      id={id}
+      labelId={id + "-label"}
       startAdornment={<InputAdornment position="end">#</InputAdornment>}
       value={value}
       onChange={(

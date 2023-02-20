@@ -8,17 +8,16 @@ export const HeaderContainer = withTheme(styled.div`
 `);
 
 export const TextField = withTheme(styled(Typography)`
-  line-height: 40px;
-  margin-left: 30px;
+  line-height: ${(props) => props.theme.spacing(6)}px;
   font-weight: 700;
+  display: inline-block;
+  margin-left: ${(props) => props.theme.spacing(3)}px;
+`);
 
-  &:before {
-    content: "";
-    background: ${(props) => props.theme.palette.primary.main};
-    position: absolute;
-    margin-left: -30px;
-    width: 6px;
-    height: 40px;
-    border-radius: ${(props) => props.theme.shape.borderRadius}px;
-  }
+export const Bar = withTheme(styled.div`
+  background: ${(props) => props.theme.palette.primary.main};
+  display: inline-block;
+  width: 6px;
+  height: ${(props) => props.theme.spacing(6)}px;
+  border-radius: ${(props) => props.theme.shape.borderRadius}px;
 `);

@@ -5,8 +5,8 @@ import {
   Theme,
   ThemeProvider,
 } from "@material-ui/core";
-import Left from "./components/Left";
-import Right from "./components/Right";
+import LeftColumn from "./components/Column/LeftColumn";
+import RightColumn from "./components/Column/RightColumn";
 import ThemeChanger from "./pages/ThemeChanger";
 import Tabs from "./components/Tabs";
 
@@ -66,15 +66,15 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      <Left>
+      <LeftColumn>
         <ThemeProvider theme={createTheme(customTheme)}>
           <CssBaseline />
           <Tabs />
         </ThemeProvider>
-      </Left>
-      <Right>
+      </LeftColumn>
+      <RightColumn>
         <ThemeChanger onThemeChange={changeTheme} />
-      </Right>
+      </RightColumn>
     </ThemeProvider>
   );
 };
