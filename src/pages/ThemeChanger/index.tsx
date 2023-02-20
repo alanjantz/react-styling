@@ -94,8 +94,8 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
         ...newTheme,
         typography: {
           ...newTheme.typography,
-          h2: {
-            ...newTheme.typography.h2,
+          h1: {
+            ...newTheme.typography.h1,
             fontFamily: event.target.value as string,
           },
         },
@@ -110,8 +110,8 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
         ...newTheme,
         typography: {
           ...newTheme.typography,
-          h2: {
-            ...newTheme.typography.h2,
+          h1: {
+            ...newTheme.typography.h1,
             fontSize: Number(event.target.value),
           },
         },
@@ -129,7 +129,7 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="subtitle1">
-              Cor primária ({newTheme.palette.primary.main})
+              Cor primária
             </Typography>
             <HexColorPicker
               color={newTheme.palette.primary.main}
@@ -142,7 +142,7 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="subtitle1">
-              Cor secundária ({newTheme.palette.secondary.main})
+              Cor secundária
             </Typography>
             <HexColorPicker
               color={newTheme.palette.secondary.main}
@@ -156,13 +156,18 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
           <Grid item xs={12}>
             <Typography variant="h4">Fonte</Typography>
           </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5">Cabeçalho (h1)</Typography>
+          </Grid>
           <Grid item xs={6}>
-            <Typography variant="subtitle1">Tipografia (cabeçalho)</Typography>
+            <Typography variant="subtitle1">Tipografia</Typography>
             <Select
-              value={newTheme.typography.h2.fontFamily}
+              value={newTheme.typography.h1.fontFamily}
               onChange={onFontFamilyChange}
             >
-              <MenuItem value="Arial">Padrão (Arial)</MenuItem>
+              <MenuItem value="'Montserrat', sans-serif">Montserrat (Padrão)</MenuItem>
+              <MenuItem value="'Poppins', sans-serif">Poppins</MenuItem>
+              <MenuItem value="Arial">Arial</MenuItem>
               <MenuItem value="cursive">Cursiva</MenuItem>
               <MenuItem value="monospace">Monospace</MenuItem>
             </Select>
@@ -171,7 +176,7 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
             <Typography variant="subtitle1">Tamanho da fonte</Typography>
             <TextField
               type="number"
-              value={newTheme.typography.h2.fontSize}
+              value={newTheme.typography.h1.fontSize}
               onChange={onFontSizeChange}
             />
           </Grid>

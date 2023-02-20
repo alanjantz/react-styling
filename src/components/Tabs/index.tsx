@@ -3,7 +3,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import TabPanel from "./TabPanel";
-import Album from "../../pages/Album";
+import Styleguide from "../../pages/Styleguide/index";
+import Album from "../../pages/Album/index";
 
 const CustomizableApp: React.FC = () => {
   const [value, setValue] = useState<number>(0);
@@ -31,13 +32,13 @@ const CustomizableApp: React.FC = () => {
           aria-label="simple tabs example"
         >
           <Tab
-            label="Album"
-            title="Default MUI components"
+            label="Style Guid"
+            title="Custom components"
             {...getDefaultProps(0)}
           />
           <Tab
-            label="Style Guid"
-            title="Custom components"
+            label="Album"
+            title="Default MUI components"
             {...getDefaultProps(1)}
           />
           <Tab
@@ -48,10 +49,10 @@ const CustomizableApp: React.FC = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Album />
+        <Styleguide />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Custom components
+        <Album />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Themes inside themes

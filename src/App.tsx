@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import Left from "./components/Left";
 import Right from "./components/Right";
-import ThemeChanger from "./pages/ThemeChanger/ThemeChanger";
+import ThemeChanger from "./pages/ThemeChanger";
 import Tabs from "./components/Tabs";
 
 export const defaultTheme = createTheme({
@@ -21,10 +21,19 @@ export const defaultTheme = createTheme({
     },
   },
   typography: {
-    h2: {
-      fontFamily: "Arial",
-      fontSize: 60,
+    h1: {
+      fontFamily: "'Montserrat', sans-serif",
+      fontSize: 40,
     },
+    h2: {
+      fontFamily: "'Montserrat', sans-serif",
+      fontSize: 30,
+    },
+    h3: {
+      fontFamily: "'Montserrat', sans-serif",
+      fontSize: 20,
+    },
+    fontFamily: "'Poppins', sans-serif",
   },
   overrides: {
     MuiCssBaseline: {
