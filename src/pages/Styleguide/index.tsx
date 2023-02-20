@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Checkbox,
   Chip,
-  Container,
   Grid,
   Radio,
   Switch,
@@ -12,16 +11,19 @@ import {
 } from "@material-ui/core";
 import FaceIcon from "@material-ui/icons/Face";
 import Alert from "@material-ui/lab/Alert";
+import { ContentContainer } from "./styles";
 import PageHeader from "../../components/PageHeader/index";
 import ColorBox from "../../components/ColorBox";
 
 const Styleguide: React.FC = () => {
+  const [selectedRadio, setSelectedRadio] = useState<number>(1);
+
   const theme = useTheme();
 
   return (
     <>
       <PageHeader>Styleguide</PageHeader>
-      <Container maxWidth="sm">
+      <ContentContainer maxWidth="sm">
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Typography
@@ -73,7 +75,7 @@ const Styleguide: React.FC = () => {
                 />
               </Grid>
               <Grid item xs={3}>
-                <ColorBox label={"Error"} color={theme.palette.error.main} />
+                <ColorBox label={"Danger"} color={theme.palette.error.main} />
               </Grid>
             </Grid>
           </Grid>
@@ -88,48 +90,77 @@ const Styleguide: React.FC = () => {
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <label>Chip</label>
-                <Chip
-                  icon={<FaceIcon />}
-                  label="Fulano Ciclano"
-                  color="primary"
-                />
-                <Chip
-                  icon={<FaceIcon />}
-                  label="Fulano Ciclano"
-                  color="secondary"
-                />
+                <Typography>Chip</Typography>
+                <Grid container spacing={1}>
+                  <Grid item>
+                    <Chip
+                      icon={<FaceIcon />}
+                      label="Fulano"
+                      color="primary"
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Chip
+                      icon={<FaceIcon />}
+                      label="Ciclano"
+                      color="secondary"
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
               <Grid item xs={6}>
-                <label>Switch</label>
+                <Typography>Switch</Typography>
                 <Switch name="checkedA" color="primary" />
                 <Switch name="checkedB" color="secondary" />
                 <Switch name="checkedC" color="default" disabled />
               </Grid>
               <Grid item xs={6}>
-                <label>Checkbox</label>
+                <Typography>Checkbox</Typography>
                 <Checkbox color="primary" />
                 <Checkbox color="secondary" />
                 <Checkbox color="default" disabled />
               </Grid>
               <Grid item xs={6}>
-                <label>Radio</label>
-                <Radio color="primary" value={1} />
-                <Radio color="secondary" value={2} />
-                <Radio color="default" value={3} disabled />
+                <Typography>Radio</Typography>
+                <Radio
+                  color="primary"
+                  checked={selectedRadio == 1}
+                  onClick={() => setSelectedRadio(1)}
+                />
+                <Radio
+                  color="secondary"
+                  checked={selectedRadio == 2}
+                  onClick={() => setSelectedRadio(2)}
+                />
+                <Radio
+                  color="default"
+                  checked={selectedRadio == 3}
+                  disabled
+                  onClick={() => setSelectedRadio(3)}
+                />
               </Grid>
               <Grid item xs={12}>
-                <label>Button</label>
-                <Button variant="contained">Default</Button>
-                <Button variant="contained" color="primary">
-                  Primary
-                </Button>
-                <Button variant="contained" color="secondary">
-                  Secondary
-                </Button>
-                <Button variant="contained" disabled>
-                  Disabled
-                </Button>
+                <Typography>Button</Typography>
+                <Grid container spacing={3}>
+                  <Grid item>
+                    <Button variant="contained">Default</Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" color="primary">
+                      Primary
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" color="secondary">
+                      Secondary
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" disabled>
+                      Disabled
+                    </Button>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -245,7 +276,7 @@ const Styleguide: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+      </ContentContainer>
     </>
   );
 };

@@ -1,14 +1,6 @@
-import React, { useCallback, useState } from "react";
-import {
-  createTheme,
-  CssBaseline,
-  Theme,
-  ThemeProvider,
-} from "@material-ui/core";
-import LeftColumn from "./components/Column/LeftColumn";
-import RightColumn from "./components/Column/RightColumn";
-import ThemeChanger from "./pages/ThemeChanger";
-import Tabs from "./components/Tabs";
+import React from "react";
+import { createTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import Styleguide from "./Styleguide/index";
 
 export const defaultTheme = createTheme({
   palette: {
@@ -19,6 +11,18 @@ export const defaultTheme = createTheme({
     secondary: {
       main: "#FF638B",
     },
+    info: {
+      main: "#6AB2FF",
+    },
+    success: {
+      main: "#ADE46C",
+    },
+    warning: {
+      main: "#FFC666"
+    },
+    error: {
+      main: "#FF405D",
+    }
   },
   typography: {
     h1: {
@@ -39,7 +43,7 @@ export const defaultTheme = createTheme({
     MuiCssBaseline: {
       "@global": {
         "*": {
-          "scrollbar-width": "thin",
+          "box-sizing": "border-box",
         },
         "*::-webkit-scrollbar": {
           width: "4px",
@@ -54,27 +58,13 @@ export const defaultTheme = createTheme({
 });
 
 const App: React.FC = () => {
-  const [customTheme, setCustomTheme] = useState<Theme>(defaultTheme);
-
-  const changeTheme = useCallback(
-    (newTheme: Theme): void => {
-      setCustomTheme((prevTheme) => ({ ...prevTheme, ...newTheme }));
-    },
-    [setCustomTheme]
-  );
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      <LeftColumn>
-        <ThemeProvider theme={createTheme(customTheme)}>
-          <CssBaseline />
-          <Tabs />
-        </ThemeProvider>
-      </LeftColumn>
-      <RightColumn>
-        <ThemeChanger onThemeChange={changeTheme} />
-      </RightColumn>
+      <ThemeProvider theme={createTheme(defaultTheme)}>
+        <CssBaseline />
+        <Styleguide />
+      </ThemeProvider>
     </ThemeProvider>
   );
 };

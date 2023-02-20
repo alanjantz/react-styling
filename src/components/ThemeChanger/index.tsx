@@ -12,11 +12,11 @@ import {
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
 import { HexColorPicker } from "react-colorful";
-import ThemeConfiguration from "../../components/ThemeConfiguration";
-import { defaultTheme } from "../../App";
+import ThemeConfiguration from "../ThemeConfiguration";
+import { defaultTheme } from "../../pages/App";
 import { useTheme } from "@material-ui/styles";
 import { useStyles } from "./styles";
-import ColorHexInput from "../../components/Inputs/ColorHexInput";
+import ColorHexInput from "../Inputs/ColorHexInput";
 
 type ThemeChangerProps = {
   onThemeChange: (newTheme: Theme) => void;
