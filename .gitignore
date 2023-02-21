@@ -2,6 +2,9 @@
 
 *.bak
 
+# production
+/build
+
 # dependencies
 /node_modules
 /.pnp
