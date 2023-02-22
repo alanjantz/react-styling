@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Button,
   Checkbox,
   Chip,
   Grid,
   Radio,
-  Switch,
   Typography,
   useTheme,
-} from "@material-ui/core";
-import FaceIcon from "@material-ui/icons/Face";
-import Alert from "@material-ui/lab/Alert";
+} from "@mui/material";
+import FaceIcon from "@mui/icons-material/Face";
 import { ContentContainer } from "./styles";
 import PageHeader from "../../components/PageHeader/index";
+import Switch from "../../components/Inputs/Switch";
 import ColorBox from "../../components/ColorBox";
 
 const Styleguide: React.FC = () => {
@@ -93,11 +93,7 @@ const Styleguide: React.FC = () => {
                 <Typography>Chip</Typography>
                 <Grid container spacing={1}>
                   <Grid item>
-                    <Chip
-                      icon={<FaceIcon />}
-                      label="Fulano"
-                      color="primary"
-                    />
+                    <Chip icon={<FaceIcon />} label="Fulano" color="primary" />
                   </Grid>
                   <Grid item>
                     <Chip
@@ -124,17 +120,17 @@ const Styleguide: React.FC = () => {
                 <Typography>Radio</Typography>
                 <Radio
                   color="primary"
-                  checked={selectedRadio == 1}
+                  checked={selectedRadio === 1}
                   onClick={() => setSelectedRadio(1)}
                 />
                 <Radio
                   color="secondary"
-                  checked={selectedRadio == 2}
+                  checked={selectedRadio === 2}
                   onClick={() => setSelectedRadio(2)}
                 />
                 <Radio
                   color="default"
-                  checked={selectedRadio == 3}
+                  checked={selectedRadio === 3}
                   disabled
                   onClick={() => setSelectedRadio(3)}
                 />

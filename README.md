@@ -5,7 +5,7 @@ Um projeto utilizando diversas formas de estilização com o styled-components e
 ## Tecnologias
 - React
 - styled-components
-- material-ui
+- mui/material
 - Github Pages
 
 ## Instalação

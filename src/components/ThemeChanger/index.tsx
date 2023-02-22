@@ -4,18 +4,17 @@ import {
   Divider,
   InputLabel,
   MenuItem,
-  Select,
   TextField,
   Theme,
   Typography,
-} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import Slider from "@material-ui/core/Slider";
+  Grid,
+  Slider,
+} from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { HexColorPicker } from "react-colorful";
 import ThemeConfiguration from "../ThemeConfiguration";
 import { defaultTheme } from "../../pages/App";
-import { useTheme } from "@material-ui/styles";
-import { useStyles } from "./styles";
+import { useTheme } from "@mui/material/styles";
 import ColorHexInput from "../Inputs/ColorHexInput";
 
 type ThemeChangerProps = {
@@ -25,7 +24,6 @@ type ThemeChangerProps = {
 const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
   const currentTheme: Theme = useTheme();
   const [newTheme, setNewTheme] = useState<Theme>(currentTheme);
-  const classes = useStyles();
 
   const onPrimaryColorChange = useCallback(
     (newColor: string): void => {
@@ -89,7 +87,7 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
   );
 
   const onFontFamilyChange = useCallback(
-    (event: React.ChangeEvent<{ value: unknown }>): void => {
+    (event: SelectChangeEvent): void => {
       setNewTheme({
         ...newTheme,
         typography: {
@@ -204,10 +202,9 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
           <Typography variant="subtitle1">Arredondamento</Typography>
           <Slider
             value={newTheme.shape.borderRadius}
-            onChange={(
-              event: React.ChangeEvent<{}>,
-              value: number | number[]
-            ) => onBorderRadiusChange(value as number)}
+            onChange={(event: Event, value: number | number[]) =>
+              onBorderRadiusChange(value as number)
+            }
             min={0}
             max={50}
             valueLabelDisplay="auto"
@@ -216,7 +213,7 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({ onThemeChange }) => {
         <Grid item xs={12}>
           <Divider />
         </Grid>
-        <Grid item xs={12} className={classes.actions} alignContent="center">
+        <Grid item xs={12} alignContent="center">
           <Button
             type="submit"
             variant="contained"

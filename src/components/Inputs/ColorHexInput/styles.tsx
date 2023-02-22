@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { OutlinedInput } from "@material-ui/core";
-import { withTheme } from "@material-ui/styles";
+import MaterialTextField from "@mui/material/TextField";
 
-export const TextField = withTheme(styled(OutlinedInput)`
-  margin-top: ${(props) => props.theme.spacing(1)}px;
+export const TextField = styled(MaterialTextField)`
+  margin-top: ${(props) => props.theme.spacing(1)};
   width: 200px;
   border-radius: 8px;
 
@@ -14,4 +13,4 @@ export const TextField = withTheme(styled(OutlinedInput)`
   & > fieldset {
     border-width: 2px;
   }
-`);
+`;

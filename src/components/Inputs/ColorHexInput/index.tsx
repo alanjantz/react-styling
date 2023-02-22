@@ -1,5 +1,5 @@
-import { InputAdornment } from "@material-ui/core";
 import React, { useCallback } from "react";
+import InputAdornment from "@mui/material/InputAdornment";
 import { TextField } from "./styles";
 
 type ColorHexInputProps = {
@@ -22,8 +22,10 @@ const ColorHexInput: React.FC<ColorHexInputProps> = ({
   return (
     <TextField
       id={id}
-      labelId={id + "-label"}
-      startAdornment={<InputAdornment position="end">#</InputAdornment>}
+      variant="outlined"
+      InputProps={{
+        startAdornment: <InputAdornment position="start">#</InputAdornment>,
+      }}
       value={value}
       onChange={(
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

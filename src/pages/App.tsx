@@ -1,10 +1,19 @@
 import React from "react";
-import { createTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import {
+  createTheme,
+  StyledEngineProvider,
+  ThemeProvider as MuiThemeProvider,
+} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "styled-components";
 import Styleguide from "./Styleguide/index";
 
 export const defaultTheme = createTheme({
   palette: {
-    type: "light",
+    mode: "light",
+    background: {
+      default: "#F5F6FA",
+    },
     primary: {
       main: "#456B8C",
     },
@@ -18,11 +27,11 @@ export const defaultTheme = createTheme({
       main: "#ADE46C",
     },
     warning: {
-      main: "#FFC666"
+      main: "#FFC666",
     },
     error: {
       main: "#FF405D",
-    }
+    },
   },
   typography: {
     h1: {
@@ -39,33 +48,21 @@ export const defaultTheme = createTheme({
     },
     fontFamily: "'Poppins', sans-serif",
   },
-  overrides: {
-    MuiCssBaseline: {
-      "@global": {
-        "*": {
-          "box-sizing": "border-box",
-        },
-        "*::-webkit-scrollbar": {
-          width: "4px",
-          height: "4px",
-        },
-        "*::-webkit-scrollbar-thumb": {
-          background: "rgba(0, 0, 0, 0.5)",
-        },
-      },
-    },
-  },
 });
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      <ThemeProvider theme={createTheme(defaultTheme)}>
-        <CssBaseline />
-        <Styleguide />
-      </ThemeProvider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <MuiThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={defaultTheme}>
+          <CssBaseline />
+          <ThemeProvider theme={createTheme(defaultTheme)}>
+            <CssBaseline />
+            <Styleguide />
+          </ThemeProvider>
+        </ThemeProvider>
+      </MuiThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

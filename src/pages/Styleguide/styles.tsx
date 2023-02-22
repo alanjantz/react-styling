@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { withTheme } from "@material-ui/styles";
-import { Container } from "@material-ui/core";
+import Container from "@mui/material/Container";
 
-export const ContentContainer = withTheme(styled(Container)`
+export const ContentContainer = styled(Container)`
   padding: ${(props) => props.theme.spacing(6, 0, 6)};
-`);
+`;
