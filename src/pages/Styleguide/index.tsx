@@ -168,7 +168,7 @@ const Styleguide: React.FC = () => {
               color="textPrimary"
               gutterBottom
             >
-              Typography
+              Alerts
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={12}>

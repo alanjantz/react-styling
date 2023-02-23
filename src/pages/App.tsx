@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  createTheme,
-  StyledEngineProvider,
-  ThemeProvider as MuiThemeProvider,
-} from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "styled-components";
+import { createTheme } from "@mui/material/styles";
+import ThemeProvider from "../components/ThemeProvider";
 import Styleguide from "./Styleguide/index";
+import ThemeChangerContext from "../hooks/ThemeChanger/ThemeChangerContext";
 
 export const defaultTheme = createTheme({
   palette: {
@@ -52,17 +48,11 @@ export const defaultTheme = createTheme({
 
 const App: React.FC = () => {
   return (
-    <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={defaultTheme}>
-        <ThemeProvider theme={defaultTheme}>
-          <CssBaseline />
-          <ThemeProvider theme={createTheme(defaultTheme)}>
-            <CssBaseline />
-            <Styleguide />
-          </ThemeProvider>
-        </ThemeProvider>
-      </MuiThemeProvider>
-    </StyledEngineProvider>
+    <ThemeProvider theme={defaultTheme}>
+      <ThemeChangerContext>
+        <Styleguide />
+      </ThemeChangerContext>
+    </ThemeProvider>
   );
 };
 

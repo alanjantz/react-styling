@@ -3,7 +3,11 @@ import { Container, Typography } from "@mui/material";
 
 export const HeaderContainer = styled.div`
   background-color: ${(props) => props.theme.palette.background.paper};
-  padding: ${(props) => props.theme.spacing(6, 0, 6)};
+  padding: ${(props) => props.theme.spacing(6, 0)};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
+    padding: ${(props) => props.theme.spacing(6, 2)};
+  }
 `;
 
 export const AlignedContainer = styled(Container)`
