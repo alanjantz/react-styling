@@ -1,18 +1,8 @@
 import styled from "styled-components";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.palette.background.paper};
-  padding: ${(props) => props.theme.spacing(6, 0)};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
-    padding: ${(props) => props.theme.spacing(6, 2)};
-  }
-`;
-
-export const AlignedContainer = styled(Container)`
-  display: flex;
-  padding: 0px !important;
 `;
 
 export const TextField = styled(Typography)`
@@ -25,6 +15,7 @@ export const TextField = styled(Typography)`
 export const Bar = styled.div`
   background: ${(props) => props.theme.palette.primary.main};
   display: inline-block;
+  position: absolute;
   width: 6px;
   height: ${(props) => props.theme.spacing(6)};
   border-radius: ${(props) => props.theme.shape.borderRadius}px;

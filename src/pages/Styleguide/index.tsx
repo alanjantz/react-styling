@@ -5,15 +5,18 @@ import {
   Checkbox,
   Chip,
   Grid,
+  Link,
   Radio,
   Typography,
   useTheme,
 } from "@mui/material";
 import FaceIcon from "@mui/icons-material/Face";
-import { ContentContainer } from "./styles";
-import PageHeader from "../../components/PageHeader/index";
+import ContentContainer from "../../components/ContentContainer";
+import Header from "../../components/Header/index";
+import Footer from "../../components/Footer/index";
 import Switch from "../../components/Inputs/Switch";
 import ColorBox from "../../components/ColorBox";
+import { Section, SectionItem, Subsection } from "./components";
 
 const Styleguide: React.FC = () => {
   const [selectedRadio, setSelectedRadio] = useState<number>(1);
@@ -22,102 +25,59 @@ const Styleguide: React.FC = () => {
 
   return (
     <>
-      <PageHeader>Styleguide</PageHeader>
-      <ContentContainer maxWidth="sm">
+      <Header>Styleguide</Header>
+      <ContentContainer>
         <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <Typography
-              component="h2"
-              variant="h2"
-              color="textPrimary"
-              gutterBottom
-            >
-              Main colors
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <ColorBox
-                  label={"Primary"}
-                  color={theme.palette.primary.main}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <ColorBox
-                  label={"Secondary"}
-                  color={theme.palette.secondary.main}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              component="h2"
-              variant="h2"
-              color="textPrimary"
-              gutterBottom
-            >
-              Accent colors
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={3}>
-                <ColorBox label={"Info"} color={theme.palette.info.main} />
-              </Grid>
-              <Grid item xs={3}>
-                <ColorBox
-                  label={"Success"}
-                  color={theme.palette.success.main}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <ColorBox
-                  label={"Warning"}
-                  color={theme.palette.warning.main}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <ColorBox label={"Danger"} color={theme.palette.error.main} />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              component="h2"
-              variant="h2"
-              color="textPrimary"
-              gutterBottom
-            >
-              Components
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <Typography>Chip</Typography>
-                <Grid container spacing={1}>
-                  <Grid item>
-                    <Chip icon={<FaceIcon />} label="Fulano" color="primary" />
-                  </Grid>
-                  <Grid item>
-                    <Chip
-                      icon={<FaceIcon />}
-                      label="Ciclano"
-                      color="secondary"
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>Switch</Typography>
+          <Section title="Main colors">
+            <SectionItem size={6}>
+              <ColorBox label={"Primary"} color={theme.palette.primary.main} />
+            </SectionItem>
+            <SectionItem size={6}>
+              <ColorBox
+                label={"Secondary"}
+                color={theme.palette.secondary.main}
+              />
+            </SectionItem>
+          </Section>
+          <Section title="Accent colors">
+            <SectionItem size={3}>
+              <ColorBox label={"Info"} color={theme.palette.info.main} />
+            </SectionItem>
+            <SectionItem size={3}>
+              <ColorBox label={"Success"} color={theme.palette.success.main} />
+            </SectionItem>
+            <SectionItem size={3}>
+              <ColorBox label={"Warning"} color={theme.palette.warning.main} />
+            </SectionItem>
+            <SectionItem size={3}>
+              <ColorBox label={"Danger"} color={theme.palette.error.main} />
+            </SectionItem>
+          </Section>
+          <Section title="Components">
+            <Subsection title="Chip" size={6}>
+              <SectionItem>
+                <Chip icon={<FaceIcon />} label="Fulano" color="primary" />
+              </SectionItem>
+              <SectionItem>
+                <Chip icon={<FaceIcon />} label="Ciclano" color="secondary" />
+              </SectionItem>
+            </Subsection>
+            <Subsection title="Switch" size={6}>
+              <SectionItem>
                 <Switch name="checkedA" color="primary" />
                 <Switch name="checkedB" color="secondary" />
                 <Switch name="checkedC" color="default" disabled />
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>Checkbox</Typography>
+              </SectionItem>
+            </Subsection>
+            <Subsection title="Checkbox" size={6}>
+              <SectionItem>
                 <Checkbox color="primary" />
                 <Checkbox color="secondary" />
                 <Checkbox color="default" disabled />
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>Radio</Typography>
+              </SectionItem>
+            </Subsection>
+            <Subsection title="Radio" size={6}>
+              <SectionItem>
                 <Radio
                   color="primary"
                   checked={selectedRadio === 1}
@@ -134,145 +94,139 @@ const Styleguide: React.FC = () => {
                   disabled
                   onClick={() => setSelectedRadio(3)}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>Button</Typography>
-                <Grid container spacing={3}>
-                  <Grid item>
-                    <Button variant="contained">Default</Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained" color="primary">
-                      Primary
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained" color="secondary">
-                      Secondary
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained" disabled>
-                      Disabled
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Typography
-              component="h2"
-              variant="h2"
-              color="textPrimary"
-              gutterBottom
-            >
-              Alerts
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Alert severity="error">
-                  This is an error alert — check it out!
-                </Alert>
-              </Grid>
-              <Grid item xs={12}>
-                <Alert severity="warning">
-                  This is a warning alert — check it out!
-                </Alert>
-              </Grid>
-              <Grid item xs={12}>
-                <Alert severity="info">
-                  This is an info alert — check it out!
-                </Alert>
-              </Grid>
-              <Grid item xs={12}>
-                <Alert severity="success">
-                  This is a success alert — check it out!
-                </Alert>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              component="h2"
-              variant="h2"
-              color="textPrimary"
-              gutterBottom
-            >
-              Typography
-            </Typography>
-            <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <Typography
-                  component="h1"
-                  variant="h1"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  Aa
-                </Typography>
-                <Typography
-                  component="label"
-                  variant="subtitle1"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  H1 header
-                </Typography>
-                <Typography
-                  component="h2"
-                  variant="h2"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  Aa
-                </Typography>
-                <Typography
-                  component="label"
-                  variant="subtitle1"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  H2 header
-                </Typography>
-                <Typography
-                  component="h3"
-                  variant="h3"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  Aa
-                </Typography>
-                <Typography
-                  component="label"
-                  variant="subtitle1"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  H3 header
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography
-                  component="p"
-                  variant="inherit"
-                  color="textPrimary"
-                  gutterBottom
-                  align="justify"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  pretium, lacus nec tincidunt laoreet, arcu lorem pulvinar
-                  massa, ut pretium quam mi ac nibh. Vestibulum urna erat,
-                  pellentesque et pellentesque vel, porttitor sed tellus. Aenean
-                  in feugiat velit, eu ullamcorper leo. In faucibus quis eros in
-                  hendrerit.
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
+              </SectionItem>
+            </Subsection>
+            <Subsection title="Buttons" size={12}>
+              <SectionItem size={4}>
+                <Button variant="contained" color="primary" fullWidth>
+                  Primary
+                </Button>
+              </SectionItem>
+              <SectionItem size={4}>
+                <Button variant="contained" color="secondary" fullWidth>
+                  Secondary
+                </Button>
+              </SectionItem>
+              <SectionItem size={4}>
+                <Button variant="contained" color="primary" disabled fullWidth>
+                  Disabled
+                </Button>
+              </SectionItem>
+              <SectionItem size={4}>
+                <Button variant="outlined" color="primary" fullWidth>
+                  Primary
+                </Button>
+              </SectionItem>
+              <SectionItem size={4}>
+                <Button variant="outlined" color="secondary" fullWidth>
+                  Secondary
+                </Button>
+              </SectionItem>
+              <SectionItem size={4}>
+                <Button variant="outlined" color="primary" disabled fullWidth>
+                  Disabled
+                </Button>
+              </SectionItem>
+            </Subsection>
+          </Section>
+          <Section title="Alerts">
+            <SectionItem size={12}>
+              <Alert severity="error">
+                This is an error alert — check it out!
+              </Alert>
+            </SectionItem>
+            <SectionItem size={12}>
+              <Alert severity="warning">
+                This is a warning alert — check it out!
+              </Alert>
+            </SectionItem>
+            <SectionItem size={12}>
+              <Alert severity="info">
+                This is an info alert — check it out!
+              </Alert>
+            </SectionItem>
+            <SectionItem size={12}>
+              <Alert severity="success">
+                This is a success alert — check it out!
+              </Alert>
+            </SectionItem>
+          </Section>
+          <Section title="Typography">
+            <SectionItem size={6}>
+              <Typography
+                component="h1"
+                variant="h1"
+                color="textPrimary"
+                gutterBottom
+              >
+                Aa
+              </Typography>
+              <Typography
+                component="label"
+                variant="subtitle1"
+                color="textPrimary"
+                gutterBottom
+              >
+                H1 header
+              </Typography>
+              <Typography
+                component="h2"
+                variant="h2"
+                color="textPrimary"
+                gutterBottom
+              >
+                Aa
+              </Typography>
+              <Typography
+                component="label"
+                variant="subtitle1"
+                color="textPrimary"
+                gutterBottom
+              >
+                H2 header
+              </Typography>
+              <Typography
+                component="h3"
+                variant="h3"
+                color="textPrimary"
+                gutterBottom
+              >
+                Aa
+              </Typography>
+              <Typography
+                component="label"
+                variant="subtitle1"
+                color="textPrimary"
+                gutterBottom
+              >
+                H3 header
+              </Typography>
+            </SectionItem>
+            <SectionItem size={6}>
+              <Typography
+                component="p"
+                variant="inherit"
+                color="textPrimary"
+                gutterBottom
+                align="justify"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                pretium, lacus nec tincidunt laoreet, arcu lorem pulvinar massa,
+                ut pretium quam mi ac nibh. Vestibulum urna erat, pellentesque
+                et pellentesque vel, porttitor sed tellus. Aenean in feugiat
+                velit, eu ullamcorper leo. In faucibus quis eros in hendrerit.
+              </Typography>
+            </SectionItem>
+          </Section>
         </Grid>
       </ContentContainer>
+      <Footer>
+        Inspired by{" "}
+        <Link href="https://codepen.io/myacode/pen/OJVPyPV" target="_blank">
+          Maria Marin
+        </Link>
+        .
+      </Footer>
     </>
   );
 };

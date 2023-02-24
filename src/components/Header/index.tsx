@@ -1,13 +1,14 @@
 import React from "react";
-import { HeaderContainer, AlignedContainer, TextField, Bar } from "./styles";
+import ContentContainer from "../ContentContainer";
+import { HeaderContainer, TextField, Bar } from "./styles";
 
 const PageHeader: React.FC = ({ children }) => {
   return (
     <HeaderContainer>
-      <AlignedContainer maxWidth="sm">
+      <ContentContainer>
         <Bar />
         <TextField variant="h1">{children}</TextField>
-      </AlignedContainer>
+      </ContentContainer>
     </HeaderContainer>
   );
 };

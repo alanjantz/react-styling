@@ -16,3 +16,13 @@ body {
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
 }
+
+::-moz-selection {
+  background: #000; /* Cor do fundo */
+  color: #fff; /* Cor da fonte */
+}
+
+::selection {
+  background: #000; /* Cor do fundo */
+  color: #fff; /* Cor da fonte */
+}
