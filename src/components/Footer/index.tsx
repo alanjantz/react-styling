@@ -1,6 +1,6 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
-import ContentContainer from "../ContentContainer";
+import ContentContainer from "../Containers/ContentContainer";
 import { FooterContainer } from "./styles";
 
 const Footer: React.FC = ({ children }) => {

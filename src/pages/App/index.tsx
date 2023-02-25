@@ -1,10 +1,13 @@
 import React from "react";
 import { createTheme } from "@mui/material/styles";
-import ThemeProvider from "../components/ThemeProvider";
-import Styleguide from "./Styleguide/index";
-import ThemeChangerContext from "../hooks/ThemeChanger/ThemeChangerContext";
+import ThemeChangerContext from "../../hooks/ThemeChanger/ThemeChangerContext";
+import ThemeChanger from "../ThemeChanger";
+import ChangableThemeContainer from "../ChangableThemeContainer";
+import ThemeProvider from "../../components/ThemeProvider";
+import Grid from "@mui/material/Grid";
+import { Column } from "./components";
 
-export const defaultTheme = createTheme({
+const defaultTheme = createTheme({
   palette: {
     mode: "light",
     background: {
@@ -46,13 +49,22 @@ export const defaultTheme = createTheme({
   },
 });
 
+const muiTheme = createTheme();
+
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <ThemeChangerContext>
-        <Styleguide />
-      </ThemeChangerContext>
-    </ThemeProvider>
+    <ThemeChangerContext defaultTheme={defaultTheme}>
+      <Grid container spacing={2} style={{ marginTop: 0 }}>
+        <Column item xs={12} md={8}>
+          <ChangableThemeContainer />
+        </Column>
+        <Column item xs={12} md={4}>
+          <ThemeProvider theme={muiTheme}>
+            <ThemeChanger />
+          </ThemeProvider>
+        </Column>
+      </Grid>
+    </ThemeChangerContext>
   );
 };
 

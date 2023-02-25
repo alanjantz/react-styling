@@ -1,5 +1,5 @@
 import React from "react";
-import ContentContainer from "../ContentContainer";
+import ContentContainer from "../Containers/ContentContainer";
 import { HeaderContainer, TextField, Bar } from "./styles";
 
 const PageHeader: React.FC = ({ children }) => {
