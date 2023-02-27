@@ -4,6 +4,7 @@ export enum ThemeChangerActionKind {
   changePrimaryColor = "changePrimaryColor",
   changeSecondaryColor = "changeSecondaryColor",
   changeBorderRadius = "changeBorderRadius",
+  changeTypography = "changeTypography",
   toggleColorMode = "toggleColorMode",
   resetTheme = "resetTheme",
 }
@@ -57,6 +58,77 @@ export const reducer = (
             ...state.theme.shape,
             borderRadius:
               payload.borderRadius ?? state.theme.shape.borderRadius,
+          },
+        },
+      };
+    case ThemeChangerActionKind.changeTypography:
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          components: {
+            ...state.theme.components,
+            MuiTypography: {
+              defaultProps: {
+                fontFamily: payload.typography,
+              },
+            },
+          },
+          typography: {
+            ...state.theme.typography,
+            fontFamily: payload.typography,
+            h1: {
+              ...state.theme.typography.h1,
+              fontFamily: payload.typography,
+            },
+            h2: {
+              ...state.theme.typography.h2,
+              fontFamily: payload.typography,
+            },
+            h3: {
+              ...state.theme.typography.h3,
+              fontFamily: payload.typography,
+            },
+            h4: {
+              ...state.theme.typography.h4,
+              fontFamily: payload.typography,
+            },
+            h5: {
+              ...state.theme.typography.h5,
+              fontFamily: payload.typography,
+            },
+            h6: {
+              ...state.theme.typography.h6,
+              fontFamily: payload.typography,
+            },
+            body1: {
+              ...state.theme.typography.body1,
+              fontFamily: payload.typography,
+            },
+            body2: {
+              ...state.theme.typography.body2,
+              fontFamily: payload.typography,
+            },
+            button: {
+              ...state.theme.typography.button,
+              fontFamily: payload.typography,
+            },
+            caption: {
+              ...state.theme.typography.caption,
+              fontFamily: payload.typography,
+            },
+            subtitle1: {
+              ...state.theme.typography.subtitle1,
+              fontFamily: payload.typography,
+            },
+            subtitle2: {
+              ...state.theme.typography.subtitle2,
+              fontFamily: payload.typography,
+            },
+            overline: {
+              ...state.theme.typography.overline,
+              fontFamily: payload.typography,
+            },
           },
         },
       };

@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 import { ColorContainer } from "./styles";
 
 type ColorBoxProps = {
@@ -9,9 +10,9 @@ type ColorBoxProps = {
 const ColorBox: React.FC<ColorBoxProps> = ({ label, color }) => {
   return (
     <>
-      {label && <label>{label}</label>}
+      {label && <Typography variant="subtitle1">{label}</Typography>}
       <ColorContainer color={color} />
-      <span>{color.toUpperCase()}</span>
+      <Typography variant="subtitle2">{color.toUpperCase()}</Typography>
     </>
   );
 };

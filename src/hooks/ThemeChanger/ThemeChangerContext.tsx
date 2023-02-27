@@ -42,6 +42,13 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
     });
   }, []);
 
+  const changeTypography = useCallback((typography: string): void => {
+    dispatch({
+      type: ThemeChangerActionKind.changeTypography,
+      payload: { typography },
+    });
+  }, []);
+
   const toggleColorMode = useCallback((): void => {
     dispatch({
       type: ThemeChangerActionKind.toggleColorMode,
@@ -62,6 +69,7 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
       changePrimaryColor,
       changeSecondaryColor,
       changeBorderRadius,
+      changeTypography,
       toggleColorMode,
       resetTheme,
     }),
@@ -70,6 +78,7 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
       changePrimaryColor,
       changeSecondaryColor,
       changeBorderRadius,
+      changeTypography,
       toggleColorMode,
       resetTheme,
     ]

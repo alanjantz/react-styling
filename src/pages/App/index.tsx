@@ -47,6 +47,13 @@ const defaultTheme = createTheme({
     },
     fontFamily: "'Poppins', sans-serif",
   },
+  components: {
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: "'Poppins', sans-serif",
+      },
+    },
+  },
 });
 
 const muiTheme = createTheme();

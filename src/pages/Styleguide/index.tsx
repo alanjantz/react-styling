@@ -229,48 +229,30 @@ const Styleguide: React.FC = () => {
             </Section>
             <Section title="Typography">
               <SectionItem size={6}>
-                <Typography
-                  component="h1"
-                  variant="h1"
-                  color="textPrimary"
-                  gutterBottom
-                >
+                <Typography variant="h1" color="textPrimary" gutterBottom>
                   Aa
                 </Typography>
                 <Typography
-                  component="label"
                   variant="subtitle1"
                   color="textPrimary"
                   gutterBottom
                 >
                   H1 header
                 </Typography>
-                <Typography
-                  component="h2"
-                  variant="h2"
-                  color="textPrimary"
-                  gutterBottom
-                >
+                <Typography variant="h2" color="textPrimary" gutterBottom>
                   Aa
                 </Typography>
                 <Typography
-                  component="label"
                   variant="subtitle1"
                   color="textPrimary"
                   gutterBottom
                 >
                   H2 header
                 </Typography>
-                <Typography
-                  component="h3"
-                  variant="h3"
-                  color="textPrimary"
-                  gutterBottom
-                >
+                <Typography variant="h3" color="textPrimary" gutterBottom>
                   Aa
                 </Typography>
                 <Typography
-                  component="label"
                   variant="subtitle1"
                   color="textPrimary"
                   gutterBottom
@@ -280,8 +262,7 @@ const Styleguide: React.FC = () => {
               </SectionItem>
               <SectionItem size={6}>
                 <Typography
-                  component="p"
-                  variant="inherit"
+                  variant="body1"
                   color="textPrimary"
                   gutterBottom
                   align="justify"
@@ -299,11 +280,13 @@ const Styleguide: React.FC = () => {
         </ContentContainer>
       </FullSizeContainer>
       <Footer>
-        Inspired by{" "}
-        <Link href="https://codepen.io/myacode/pen/OJVPyPV" target="_blank">
-          Maria Marin
-        </Link>
-        .
+        <Typography>
+          Inspired by{" "}
+          <Link href="https://codepen.io/myacode/pen/OJVPyPV" target="_blank">
+            Maria Marin
+          </Link>
+          .
+        </Typography>
       </Footer>
     </>
   );
