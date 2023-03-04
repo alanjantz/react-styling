@@ -1,8 +1,13 @@
 import React, { useState, useCallback } from "react";
-import Popover from "@mui/material/Popover";
 import PaletteIcon from "@mui/icons-material/Palette";
 import { HexColorPicker } from "react-colorful";
-import { Button, ColorBox, IconButton } from "./styles";
+import {
+  Popover,
+  PopoverContent,
+  Button,
+  ColorBox,
+  IconButton,
+} from "./styles";
 
 type ColorPickerProps = {
   color: string;
@@ -43,10 +48,12 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChange }) => {
           horizontal: "left",
         }}
       >
-        <HexColorPicker
-          color={newColor}
-          onChange={(newColor) => setNewColor(newColor)}
-        />
+        <PopoverContent>
+          <HexColorPicker
+            color={newColor}
+            onChange={(newColor) => setNewColor(newColor)}
+          />
+        </PopoverContent>
       </Popover>
     </>
   );

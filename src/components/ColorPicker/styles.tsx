@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import MuiPopover from "@mui/material/Popover";
 
 export const Button = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
   width: 100%;
+  max-width: 200px;
   display: flex;
   align-content: stretch;
   align-items: stretch;
@@ -40,4 +42,16 @@ export const ColorBox = styled.div<ColorBoxProps>`
   -moz-border-radius-bottomleft: ${({ theme }) => theme.shape.borderRadius}px;
   border-top-left-radius: ${({ theme }) => theme.shape.borderRadius}px;
   border-bottom-left-radius: ${({ theme }) => theme.shape.borderRadius}px;
+`;
+
+export const PopoverContent = styled.div`
+  padding: ${({ theme }) => theme.spacing(1)};
+  width: 200px;
+  height: 200px;
+  box-sizing: content-box;
+`;
+
+export const Popover = styled(MuiPopover)`
+  margin-top: -${({ theme }) => theme.spacing(1)};
+  margin-left: -${({ theme }) => theme.spacing(1)};
 `;

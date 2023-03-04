@@ -16,6 +16,10 @@ const ThemeChanger: React.FC = () => {
     theme,
     changePrimaryColor,
     changeSecondaryColor,
+    changeInfoColor,
+    changeSuccessColor,
+    changeWarningColor,
+    changeErrorColor,
     changeBorderRadius,
     changeTypography,
     resetTheme,
@@ -43,6 +47,34 @@ const ThemeChanger: React.FC = () => {
                 onChange={changeSecondaryColor}
               />
             </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Info</Typography>
+              <ColorPicker
+                color={theme.palette.info.main}
+                onChange={changeInfoColor}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Success</Typography>
+              <ColorPicker
+                color={theme.palette.success.main}
+                onChange={changeSuccessColor}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Warning</Typography>
+              <ColorPicker
+                color={theme.palette.warning.main}
+                onChange={changeWarningColor}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Danger</Typography>
+              <ColorPicker
+                color={theme.palette.error.main}
+                onChange={changeErrorColor}
+              />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
@@ -64,6 +96,10 @@ const ThemeChanger: React.FC = () => {
                   <MenuItem value={"'Poppins', sans-serif"}>
                     Default (Poppins)
                   </MenuItem>
+                  <MenuItem value={"'Montserrat', sans-serif"}>
+                    Montserrat
+                  </MenuItem>
+                  <MenuItem value={"'Roboto', sans-serif"}>Roboto</MenuItem>
                   <MenuItem value={"monospace"}>Monospace</MenuItem>
                   <MenuItem value={"cursive"}>Cursive</MenuItem>
                 </Select>

@@ -35,6 +35,34 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
     });
   }, []);
 
+  const changeInfoColor = useCallback((infoColor: string): void => {
+    dispatch({
+      type: ThemeChangerActionKind.changeInfoColor,
+      payload: { infoColor },
+    });
+  }, []);
+
+  const changeSuccessColor = useCallback((successColor: string): void => {
+    dispatch({
+      type: ThemeChangerActionKind.changeSuccessColor,
+      payload: { successColor },
+    });
+  }, []);
+
+  const changeWarningColor = useCallback((warningColor: string): void => {
+    dispatch({
+      type: ThemeChangerActionKind.changeWarningColor,
+      payload: { warningColor },
+    });
+  }, []);
+
+  const changeErrorColor = useCallback((errorColor: string): void => {
+    dispatch({
+      type: ThemeChangerActionKind.changeErrorColor,
+      payload: { errorColor },
+    });
+  }, []);
+
   const changeBorderRadius = useCallback((borderRadius: number): void => {
     dispatch({
       type: ThemeChangerActionKind.changeBorderRadius,
@@ -68,6 +96,10 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
       ...state,
       changePrimaryColor,
       changeSecondaryColor,
+      changeInfoColor,
+      changeSuccessColor,
+      changeWarningColor,
+      changeErrorColor,
       changeBorderRadius,
       changeTypography,
       toggleColorMode,
@@ -77,6 +109,10 @@ const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({
       state,
       changePrimaryColor,
       changeSecondaryColor,
+      changeInfoColor,
+      changeSuccessColor,
+      changeWarningColor,
+      changeErrorColor,
       changeBorderRadius,
       changeTypography,
       toggleColorMode,
