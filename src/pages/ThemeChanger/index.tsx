@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
+import Switch from "@mui/material/Switch";
 import { useThemeChanger } from "../../hooks/ThemeChanger/ThemeChangerContext";
 import ColorPicker from "../../components/ColorPicker";
 
@@ -22,6 +23,7 @@ const ThemeChanger: React.FC = () => {
     changeErrorColor,
     changeBorderRadius,
     changeTypography,
+    toggleColorMode,
     resetTheme,
   } = useThemeChanger();
 
@@ -104,6 +106,19 @@ const ThemeChanger: React.FC = () => {
                   <MenuItem value={"cursive"}>Cursive</MenuItem>
                 </Select>
               </FormControl>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="h6">Theme mode</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Switch
+                checked={theme.palette.mode === "dark"}
+                onClick={(_) => toggleColorMode()}
+              />
             </Grid>
           </Grid>
         </Grid>

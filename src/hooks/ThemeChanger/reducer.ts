@@ -1,4 +1,4 @@
-import { darken, lighten, PaletteColor } from "@mui/material";
+import { darken, lighten, PaletteColor, createTheme } from "@mui/material";
 import { ChangableThemeState, ThemeChangerState } from "./Model";
 
 export enum ThemeChangerActionKind {
@@ -196,15 +196,26 @@ export const reducer = (
         },
       };
     case ThemeChangerActionKind.toggleColorMode:
+      const { theme } = state;
+      const { shape, typography } = theme;
+
+      const newThemeMode = createTheme({
+        palette: {
+          mode: state.theme.palette.mode === "light" ? "dark" : "light",
+          primary: getNewPaletteColor(theme.palette.primary.main),
+          secondary: getNewPaletteColor(theme.palette.secondary.main),
+          info: getNewPaletteColor(theme.palette.info.main),
+          success: getNewPaletteColor(theme.palette.success.main),
+          warning: getNewPaletteColor(theme.palette.warning.main),
+          error: getNewPaletteColor(theme.palette.error.main),
+        },
+        shape,
+        typography,
+      });
+
       return {
         ...state,
-        theme: {
-          ...state.theme,
-          palette: {
-            ...state.theme.palette,
-            mode: state.theme.palette.mode === "light" ? "dark" : "light",
-          },
-        },
+        theme: newThemeMode,
       };
     case ThemeChangerActionKind.resetTheme:
       return payload.defaultTheme

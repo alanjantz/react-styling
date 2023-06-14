@@ -9,7 +9,6 @@ import { Column } from "./components";
 
 const defaultTheme = createTheme({
   palette: {
-    mode: "light",
     background: {
       default: "#F5F6FA",
     },

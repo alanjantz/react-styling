@@ -6,6 +6,8 @@ import Styleguide from "../Styleguide";
 const ChangableThemeContainer: React.FC = () => {
   const { theme } = useThemeChanger();
 
+  console.log("theme", JSON.stringify(theme));
+
   return (
     <ThemeProvider theme={{ ...theme }}>
       <Styleguide />
