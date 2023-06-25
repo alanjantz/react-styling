@@ -1,9 +1,9 @@
 import React from "react";
 import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
-import { useThemeChanger } from "../../hooks/ThemeChanger/ThemeChangerContext";
+import { useThemeChanger } from "../../../../hooks/ThemeChanger/ThemeChangerContext";
 
-const ThemeSwitch: React.FC = () => {
+const ColorModeSwitch: React.FC = () => {
   const { theme, toggleColorMode } = useThemeChanger();
 
   return (
@@ -19,4 +19,4 @@ const ThemeSwitch: React.FC = () => {
   );
 };
 
-export default ThemeSwitch;
+export default ColorModeSwitch;

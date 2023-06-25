@@ -4,27 +4,14 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Divider from "@mui/material/Divider";
-import MenuItem from "@mui/material/MenuItem";
 import { useThemeChanger } from "../../hooks/ThemeChanger/ThemeChangerContext";
-import ColorPicker from "../../components/ColorPicker";
-import ThemeSwitch from "../../components/ThemeSwitch";
+import ColorModeSwitch from "./components/ColorModeSwitch";
+import PaletteChanger from "./components/PaletteChanger";
+import TypographyChanger from "./components/TypographyChanger";
 
 const ThemeChanger: React.FC = () => {
-  const {
-    theme,
-    changePrimaryColor,
-    changeSecondaryColor,
-    changeInfoColor,
-    changeSuccessColor,
-    changeWarningColor,
-    changeErrorColor,
-    changeBorderRadius,
-    changeTypography,
-    resetTheme,
-  } = useThemeChanger();
+  const { theme, changeBorderRadius, resetTheme } = useThemeChanger();
 
   return (
     <Box>
@@ -34,47 +21,8 @@ const ThemeChanger: React.FC = () => {
             <Grid item xs={12}>
               <Typography variant="h6">Colors</Typography>
             </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Primary</Typography>
-              <ColorPicker
-                color={theme.palette.primary.main}
-                onChange={changePrimaryColor}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Secondary</Typography>
-              <ColorPicker
-                color={theme.palette.secondary.main}
-                onChange={changeSecondaryColor}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Info</Typography>
-              <ColorPicker
-                color={theme.palette.info.main}
-                onChange={changeInfoColor}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Success</Typography>
-              <ColorPicker
-                color={theme.palette.success.main}
-                onChange={changeSuccessColor}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Warning</Typography>
-              <ColorPicker
-                color={theme.palette.warning.main}
-                onChange={changeWarningColor}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography gutterBottom>Danger</Typography>
-              <ColorPicker
-                color={theme.palette.error.main}
-                onChange={changeErrorColor}
-              />
+            <Grid item xs={12}>
+              <PaletteChanger />
             </Grid>
           </Grid>
         </Grid>
@@ -84,27 +32,7 @@ const ThemeChanger: React.FC = () => {
               <Typography variant="h6">Typography</Typography>
             </Grid>
             <Grid item xs={6}>
-              <FormControl fullWidth>
-                <Select
-                  labelId="typography-select-label"
-                  id="typography-select"
-                  value={theme.typography.fontFamily}
-                  onChange={(event: SelectChangeEvent) => {
-                    changeTypography(event.target.value);
-                  }}
-                  fullWidth
-                >
-                  <MenuItem value={"'Poppins', sans-serif"}>
-                    Default (Poppins)
-                  </MenuItem>
-                  <MenuItem value={"'Montserrat', sans-serif"}>
-                    Montserrat
-                  </MenuItem>
-                  <MenuItem value={"'Roboto', sans-serif"}>Roboto</MenuItem>
-                  <MenuItem value={"monospace"}>Monospace</MenuItem>
-                  <MenuItem value={"cursive"}>Cursive</MenuItem>
-                </Select>
-              </FormControl>
+              <TypographyChanger />
             </Grid>
           </Grid>
         </Grid>
@@ -114,7 +42,7 @@ const ThemeChanger: React.FC = () => {
               <Typography variant="h6">Theme mode</Typography>
             </Grid>
             <Grid item xs={6}>
-              <ThemeSwitch />
+              <ColorModeSwitch />
             </Grid>
           </Grid>
         </Grid>
@@ -138,20 +66,20 @@ const ThemeChanger: React.FC = () => {
                 max={20}
               />
             </Grid>
-            <Grid item xs={12}>
-              <Divider />
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                variant="text"
-                onClick={() => {
-                  resetTheme();
-                }}
-              >
-                Reset
-              </Button>
-            </Grid>
           </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="text"
+            onClick={() => {
+              resetTheme();
+            }}
+          >
+            Reset
+          </Button>
         </Grid>
       </Grid>
     </Box>
