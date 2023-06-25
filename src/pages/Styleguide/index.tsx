@@ -281,7 +281,7 @@ const Styleguide: React.FC = () => {
         </ContentContainer>
       </FullSizeContainer>
       <Footer>
-        <Typography>
+        <Typography color={theme.palette.text.primary}>
           Inspired by{" "}
           <Link href="https://codepen.io/myacode/pen/OJVPyPV" target="_blank">
             Maria Marin

@@ -61,7 +61,7 @@ const App: React.FC = () => {
   return (
     <ThemeChangerContext defaultTheme={defaultTheme}>
       <Grid container spacing={2} style={{ marginTop: 0 }}>
-        <Column item xs={12} md={8}>
+        <Column item xs={12} md={8} style={{ paddingTop: 0 }}>
           <ChangableThemeContainer />
         </Column>
         <Column item xs={12} md={4}>
