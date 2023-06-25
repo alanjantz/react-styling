@@ -16,7 +16,9 @@ jobs:
           cache: "yarn"
 
       - name: Pre Deploy
-        run: yarn predeploy
+        run: |
+          cd react-styling/react-styling
+          yarn predeploy
 
       - name: Deploy
         run: yarn deploy

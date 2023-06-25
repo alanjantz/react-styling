@@ -20,7 +20,9 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build
+        run: |
+          cd react-styling/react-styling
+          yarn build
 
       - name: Run tests & coverage
         run: yarn test:coverage
