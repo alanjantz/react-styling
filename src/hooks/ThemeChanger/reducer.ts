@@ -198,10 +198,14 @@ export const reducer = (
     case ThemeChangerActionKind.toggleColorMode:
       const { theme } = state;
       const { shape, typography } = theme;
+      const isLightMode = state.theme.palette.mode === "light";
 
       const newThemeMode = createTheme({
         palette: {
-          mode: state.theme.palette.mode === "light" ? "dark" : "light",
+          mode: isLightMode ? "dark" : "light",
+          background: {
+            default: isLightMode ? "#252525" : "#F5F6FA",
+          },
           primary: getNewPaletteColor(theme.palette.primary.main),
           secondary: getNewPaletteColor(theme.palette.secondary.main),
           info: getNewPaletteColor(theme.palette.info.main),

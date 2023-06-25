@@ -8,9 +8,9 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
-import Switch from "@mui/material/Switch";
 import { useThemeChanger } from "../../hooks/ThemeChanger/ThemeChangerContext";
 import ColorPicker from "../../components/ColorPicker";
+import ThemeSwitch from "../../components/ThemeSwitch";
 
 const ThemeChanger: React.FC = () => {
   const {
@@ -23,7 +23,6 @@ const ThemeChanger: React.FC = () => {
     changeErrorColor,
     changeBorderRadius,
     changeTypography,
-    toggleColorMode,
     resetTheme,
   } = useThemeChanger();
 
@@ -115,10 +114,7 @@ const ThemeChanger: React.FC = () => {
               <Typography variant="h6">Theme mode</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Switch
-                checked={theme.palette.mode === "dark"}
-                onClick={(_) => toggleColorMode()}
-              />
+              <ThemeSwitch />
             </Grid>
           </Grid>
         </Grid>
