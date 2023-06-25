@@ -8,12 +8,12 @@ import { ThemeProviderProps } from "@mui/material/styles/ThemeProvider";
 import { ThemeProvider as StyledComponentsThemProvider } from "styled-components";
 
 const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
-  const { children } = props;
+  const { children, theme } = props;
 
   return (
     <StyledEngineProvider injectFirst>
-      <MuiThemeProvider {...props}>
-        <StyledComponentsThemProvider {...props}>
+      <MuiThemeProvider theme={theme}>
+        <StyledComponentsThemProvider theme={theme}>
           <CssBaseline />
           <>{children}</>
         </StyledComponentsThemProvider>

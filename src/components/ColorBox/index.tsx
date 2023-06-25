@@ -1,6 +1,5 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
-import { ColorContainer } from "./styles";
+import { ColorContainer, Typography } from "./styles";
 
 type ColorBoxProps = {
   label?: string;

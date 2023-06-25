@@ -10,6 +10,7 @@ export const TextField = styled(Typography)`
   font-weight: 700;
   display: inline-block;
   margin-left: ${(props) => props.theme.spacing(3)};
+  color: ${(props) => props.theme.palette.text.primary};
 `;
 
 export const Bar = styled.div`

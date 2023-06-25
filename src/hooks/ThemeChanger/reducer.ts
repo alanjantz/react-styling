@@ -1,8 +1,13 @@
+import { darken, lighten, PaletteColor, createTheme } from "@mui/material";
 import { ChangableThemeState, ThemeChangerState } from "./Model";
 
 export enum ThemeChangerActionKind {
   changePrimaryColor = "changePrimaryColor",
   changeSecondaryColor = "changeSecondaryColor",
+  changeInfoColor = "changeInfoColor",
+  changeSuccessColor = "changeSuccessColor",
+  changeWarningColor = "changeWarningColor",
+  changeErrorColor = "changeErrorColor",
   changeBorderRadius = "changeBorderRadius",
   changeTypography = "changeTypography",
   toggleColorMode = "toggleColorMode",
@@ -19,33 +24,91 @@ export const reducer = (
   action: Actions
 ): ThemeChangerState => {
   const { type, payload } = action;
+  const COLOR_COEFFICIENT = 0.1;
+
+  const getNewPaletteColor = (color: string): PaletteColor => {
+    return {
+      main: color,
+      light: lighten(color, COLOR_COEFFICIENT),
+      dark: darken(color, COLOR_COEFFICIENT),
+      contrastText: state.theme.palette.getContrastText(color),
+    };
+  };
+
   switch (type) {
     case ThemeChangerActionKind.changePrimaryColor:
+      const primaryColor =
+        payload.primaryColor ?? state.theme.palette.primary.main;
       return {
         ...state,
         theme: {
           ...state.theme,
           palette: {
             ...state.theme.palette,
-            primary: {
-              ...state.theme.palette.primary,
-              main: payload.primaryColor ?? state.theme.palette.primary.main,
-            },
+            primary: getNewPaletteColor(primaryColor),
           },
         },
       };
     case ThemeChangerActionKind.changeSecondaryColor:
+      const secondaryColor =
+        payload.secondaryColor ?? state.theme.palette.secondary.main;
       return {
         ...state,
         theme: {
           ...state.theme,
           palette: {
             ...state.theme.palette,
-            secondary: {
-              ...state.theme.palette.secondary,
-              main:
-                payload.secondaryColor ?? state.theme.palette.secondary.main,
-            },
+            secondary: getNewPaletteColor(secondaryColor),
+          },
+        },
+      };
+    case ThemeChangerActionKind.changeInfoColor:
+      const infoColor = payload.infoColor ?? state.theme.palette.info.main;
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          palette: {
+            ...state.theme.palette,
+            info: getNewPaletteColor(infoColor),
+          },
+        },
+      };
+    case ThemeChangerActionKind.changeSuccessColor:
+      const successColor =
+        payload.successColor ?? state.theme.palette.success.main;
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          palette: {
+            ...state.theme.palette,
+            success: getNewPaletteColor(successColor),
+          },
+        },
+      };
+    case ThemeChangerActionKind.changeWarningColor:
+      const warningColor =
+        payload.warningColor ?? state.theme.palette.warning.main;
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          palette: {
+            ...state.theme.palette,
+            warning: getNewPaletteColor(warningColor),
+          },
+        },
+      };
+    case ThemeChangerActionKind.changeErrorColor:
+      const errorColor = payload.errorColor ?? state.theme.palette.error.main;
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          palette: {
+            ...state.theme.palette,
+            error: getNewPaletteColor(errorColor),
           },
         },
       };
@@ -133,15 +196,26 @@ export const reducer = (
         },
       };
     case ThemeChangerActionKind.toggleColorMode:
+      const { theme } = state;
+      const { shape, typography } = theme;
+
+      const newThemeMode = createTheme({
+        palette: {
+          mode: state.theme.palette.mode === "light" ? "dark" : "light",
+          primary: getNewPaletteColor(theme.palette.primary.main),
+          secondary: getNewPaletteColor(theme.palette.secondary.main),
+          info: getNewPaletteColor(theme.palette.info.main),
+          success: getNewPaletteColor(theme.palette.success.main),
+          warning: getNewPaletteColor(theme.palette.warning.main),
+          error: getNewPaletteColor(theme.palette.error.main),
+        },
+        shape,
+        typography,
+      });
+
       return {
         ...state,
-        theme: {
-          ...state.theme,
-          palette: {
-            ...state.theme.palette,
-            mode: state.theme.palette.mode === "light" ? "dark" : "light",
-          },
-        },
+        theme: newThemeMode,
       };
     case ThemeChangerActionKind.resetTheme:
       return payload.defaultTheme

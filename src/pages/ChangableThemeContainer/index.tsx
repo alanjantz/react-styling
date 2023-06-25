@@ -1,5 +1,4 @@
 import React from "react";
-import { createTheme } from "@mui/material/styles";
 import ThemeProvider from "../../components/ThemeProvider";
 import { useThemeChanger } from "../../hooks/ThemeChanger/ThemeChangerContext";
 import Styleguide from "../Styleguide";
@@ -7,8 +6,10 @@ import Styleguide from "../Styleguide";
 const ChangableThemeContainer: React.FC = () => {
   const { theme } = useThemeChanger();
 
+  console.log("theme", JSON.stringify(theme));
+
   return (
-    <ThemeProvider theme={createTheme(theme)}>
+    <ThemeProvider theme={{ ...theme }}>
       <Styleguide />
     </ThemeProvider>
   );
