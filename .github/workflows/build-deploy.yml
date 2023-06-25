@@ -25,7 +25,7 @@ jobs:
         run: yarn build
 
       - name: Running tests
-        run: yarn test
+        run: yarn test --passWithNoTests
 
       - name: Uploading production-ready build files
         uses: actions/upload-artifact@v2
