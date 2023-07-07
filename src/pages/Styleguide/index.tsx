@@ -25,7 +25,6 @@ import Switch from "../../components/Inputs/Switch";
 import ColorBox from "../../components/ColorBox";
 import FullSizeContainer from "../../components/Containers/FullSizeContainer";
 import { Section, SectionItem, Subsection } from "./components";
-import { Container } from "./styles";
 
 const Styleguide: React.FC = () => {
   const [selectedRadio, setSelectedRadio] = useState<number>(1);
@@ -35,7 +34,7 @@ const Styleguide: React.FC = () => {
   const { theme } = useThemeChanger();
 
   return (
-    <Container>
+    <React.Fragment>
       <Header>Styleguide</Header>
       <FullSizeContainer>
         <ContentContainer>
@@ -289,7 +288,7 @@ const Styleguide: React.FC = () => {
           .
         </Typography>
       </Footer>
-    </Container>
+    </React.Fragment>
   );
 };
 

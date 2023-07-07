@@ -5,5 +5,4 @@ export const Container = styled(MuiContainer)`
   padding: 0px !important;
   margin: 0px !important;
   max-width: none;
-  background-color: ${(props) => props.theme.palette.background.default};
 `;
