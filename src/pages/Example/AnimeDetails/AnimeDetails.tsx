@@ -1,12 +1,8 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
-import { DetailsContainer, Synopsis } from "./styles";
-
-export interface CharacterProps {
-  name: string;
-  voiceActor: string;
-}
+import { DetailsContainer, Synopsis, Stack } from "./styles";
+import AnimeCharacterList, { CharacterProps } from "./AnimeCharacterList";
+import Grid from "@mui/material/Grid";
 
 export interface AnimeDetailsProps {
   synopsis: string;
@@ -21,12 +17,19 @@ const AnimeDetails: React.FC<AnimeDetailsProps> = ({
 }) => {
   return (
     <DetailsContainer>
-      <Stack direction="row" spacing={1}>
-        {genres.sort().map((genre) => (
-          <Chip key={genre} label={genre} />
-        ))}
-      </Stack>
-      <Synopsis>{synopsis}</Synopsis>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Stack direction="row" spacing={1}>
+            {genres.sort().map((genre) => (
+              <Chip key={genre} label={genre} color="primary" />
+            ))}
+          </Stack>
+          <Synopsis>{synopsis}</Synopsis>
+        </Grid>
+        <Grid item xs={8}>
+          <AnimeCharacterList characters={characters} />
+        </Grid>
+      </Grid>
     </DetailsContainer>
   );
 };

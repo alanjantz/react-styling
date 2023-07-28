@@ -7,6 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import AnimeRow, { AnimeRowProps } from "./AnimeRow";
+import { CharacterProps } from "./AnimeCharacterList";
 
 const AnimeTable: React.FC = () => {
   const createData = useCallback(
@@ -16,7 +17,8 @@ const AnimeTable: React.FC = () => {
       seasons: number,
       studio: string,
       synopsis: string,
-      genres: string[]
+      genres: string[],
+      characters: CharacterProps[]
     ): AnimeRowProps => {
       return {
         name,
@@ -26,7 +28,7 @@ const AnimeTable: React.FC = () => {
         details: {
           synopsis,
           genres,
-          characters: [],
+          characters,
         },
       };
     },
@@ -39,40 +41,72 @@ const AnimeTable: React.FC = () => {
       2014,
       1,
       "A-1 Pictures",
-      "Arima Kousei é um ex-prodígio musical que perdeu a habilidade de tocar piano depois que sua mãe, que também era sua instrutora, faleceu. Sua vida agora é monótona, mas ela começa a ganhar cor quando ele conhece uma violinista por acaso. Miyazono Kaori é uma garota audaciosa e determinada cuja personalidade transborda. Encantado pela garota, Kousei, nos seus 14 anos, começa a seguir em frente com suas próprias pernas.",
-      ["Drama", "School", "Musical", "Slice of Life"]
+      "Kousei Arima is a child prodigy known as the 'Human Metronome' for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.",
+      ["Drama", "School", "Musical", "Slice of Life"],
+      [
+        { name: "Miyazono, Kaori", voiceActor: "Taneda, Risa" },
+        { name: "Arima, Kousei", voiceActor: "Hanae, Natsuki" },
+        { name: "Sawabe, Tsubaki", voiceActor: "Sawabe, Tsubaki" },
+        { name: "Watari, Ryouta", voiceActor: "Oosaka, Ryouta" },
+      ]
     ),
     createData(
       "Kiznaiver",
       2016,
       1,
       "Trigger",
-      "O Sistema Kizuna é um sistema incompleto para a implementação da paz mundial que conecta pessoas através das dores. Todos que foram conectados a esse sistema são chamados de Kiznaivers. Certo dia, Sonosaki Noriko diz a seu colega de classe Agata Katsuhira que ele havia sido selecionado para ser um Kiznaiver. O Sistema Kizuna permite que Katsuhira compartilhe seus ferimentos e se conecte aos colegas de classe cujas vidas e personalidades são totalmente diferentes da dele. A Cidade de Sugomori foi construída em terreno recuperado, mas com o passar dos anos, a população da cidade está caindo. A história se passa nesta cidade, onde Katsuhira e seus amigos vivem.",
-      ["Action", "Drama", "Sci-Fi"]
+      "Katsuhira Agata is a quiet and reserved teenage boy whose sense of pain has all but vanished. His friend, Chidori Takashiro, can only faintly remember the days before Katsuhira had undergone this profound change. Now, his muffled and complacent demeanor make Katsuhira a constant target for bullies, who exploit him for egregious sums of money. But their fists only just manage to make him blink, as even emotions are far from his grasp.",
+      ["Action", "Drama", "Sci-Fi"],
+      [
+        { name: "Takashiro, Chidori", voiceActor: "Terasaki, Yuka" },
+        { name: "Agata, Katsuhira", voiceActor: "Agata, Katsuhira" },
+        { name: "Sonozaki, Noriko", voiceActor: "Yamamura, Hibiku" },
+        { name: "Niiyama, Niko", voiceActor: "Kuno, Misaki" },
+        { name: "Hisomu, Yoshiharu", voiceActor: "Nishiyama, Koutarou" },
+        { name: "Tenga, Hajime", voiceActor: "Maeno, Tomoaki" },
+        { name: "Maki, Honoka", voiceActor: "Satou, Rina" },
+        { name: "Yuta, Tsuguhito", voiceActor: "Yuta, Tsuguhito" },
+      ]
     ),
     createData(
       "Yuri!!! On Ice",
       2016,
       1,
       "MAPPA",
-      "A história gira em torno de Yuri Katsuki, que carregou todas as esperanças do Japão em seus ombros para vencer a competição de patinação no gelo Grand Prix Final, mas sofreu uma derrota esmagadora. Ele volta para casa em Kyushu e parte dele se sente como se quisesse se aposentar, e a outra parte se sente com a vontade de querer continuar a patinação no gelo. Com esses sentimentos mistos girando dentro dele, ele se mantém na casa dos pais. De repente, o patinador de gelo pentacampeão Victor Nikiforov, aparece diante dele, junto de Yuri Plisetsky, uma figura jovem patinadora russa que já está derrotando os seus veteranos. Victor e ambos Yuris assumiram o desafio em uma série Grand Prix sem precedentes.",
-      ["Boys Love", "Sports"]
+      "Reeling from his crushing defeat at the Grand Prix Finale, Yuuri Katsuki, once Japan's most promising figure skater, returns to his family home to assess his options for the future. At age 23, Yuuri's window for success in skating is closing rapidly, and his love of pork cutlets and aptitude for gaining weight are not helping either.",
+      ["Boys Love", "Sports"],
+      [
+        { name: "Nikiforov, Victor", voiceActor: "Suwabe, Junichi" },
+        { name: "Plisetsky, Yuri", voiceActor: "Uchiyama, Kouki" },
+        { name: "Katsuki, Yuuri", voiceActor: "Toyonaga, Toshiyuki" },
+      ]
     ),
     createData(
       "Zankyou no Terror",
       2014,
       1,
       "MAPPA",
-      "Num dia de verão, um bombardeio terrorista subitamente atinge Tóquio. Descobre-se que os culpados por trás desse ato que acordou a nação do seu sono complacente são apenas dois garotos. Agora, os culpados, conhecidos como 'Sphinx' (Esfínge) começam um grandioso jogo que engloba todo o território japonês",
-      ["Psychologic", "Thriller"]
+      "Painted in red, the word 'VON' is all that is left behind after a terrorist attack on a nuclear facility in Japan. The government is shattered by their inability to act, and the police are left frantically searching for ways to crack down the perpetrators. The public are clueless—until, six months later, a strange video makes its way onto the internet. In it, two teenage boys who identify themselves only as 'Sphinx' directly challenge the police, threatening to cause destruction and mayhem across Tokyo. Unable to stop the mass panic quickly spreading through the city and desperate for any leads in their investigation, the police struggle to act effectively against these terrorists, with Detective Kenjirou Shibazaki caught in the middle of it all.",
+      ["Psychologic", "Thriller"],
+      [
+        { name: "Twelve", voiceActor: "Saitou, Souma" },
+        { name: "Nine", voiceActor: "Ishikawa, Kaito" },
+        { name: "Shibazaki, Kenjirou", voiceActor: "Sakuya, Shunsuke" },
+        { name: "Mishima, Lisa", voiceActor: "Tanezaki, Atsumi" },
+      ]
     ),
     createData(
       "Ao no Exorcist",
       2011,
       2,
       "A-1 Pictures",
-      "Este mundo é composto de duas dimensões que se juntaram formando apenas uma, como um espelho. O primeiro é o mundo em que os seres humanos vivem, Assiah. O outro é o mundo dos demônios, Gehenna. Normalmente, as viagens entre os dois, na verdade qualquer tipo de contato entre os dois, é impossível. No entanto, os demônios podem passar para este mundo por possuir qualquer coisa que existe dentro dele. Satanás, o deus dos demônios, há uma coisa que ele não tem, e isso é uma substância no mundo humano que é poderosa o suficiente para contê-lo! Para o efeito, criou Rin, seu filho de uma mulher humana, mas seu filho concorda com seus planos? Ou ele vai se tornar algo mais…? Um exorcista?",
-      ["Action", "Fantasy", "Shounen", "Supernatural"]
+      "Humans and demons are two sides of the same coin, as are Assiah and Gehenna, their respective worlds. The only way to travel between the realms is by the means of possession, like in ghost stories. However, Satan, the ruler of Gehenna, cannot find a suitable host to possess and therefore, remains imprisoned in his world. In a desperate attempt to conquer Assiah, he sends his son instead, intending for him to eventually grow into a vessel capable of possession by the demon king.",
+      ["Action", "Fantasy", "Shounen", "Supernatural"],
+      [
+        { name: "Okumura, Rin", voiceActor: "Okamoto, Nobuhiko" },
+        { name: "Okamoto, Nobuhiko", voiceActor: "Fukuyama, Jun" },
+        { name: "Kuro", voiceActor: "Takagaki, Ayahi" },
+      ]
     ),
   ];
 
@@ -81,7 +115,7 @@ const AnimeTable: React.FC = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell />
+            <TableCell style={{ width: 0 }} />
             <TableCell>Name</TableCell>
             <TableCell align="right">Year</TableCell>
             <TableCell align="right">Seasons</TableCell>

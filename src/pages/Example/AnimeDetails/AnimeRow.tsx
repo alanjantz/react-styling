@@ -31,9 +31,7 @@ const AnimeRow: React.FC<AnimeRowProps> = ({
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {name}
-        </TableCell>
+        <TableCell scope="row">{name}</TableCell>
         <TableCell align="right">{year}</TableCell>
         <TableCell align="right">{seasons}</TableCell>
         <TableCell>{studio}</TableCell>
