@@ -229,7 +229,11 @@ const Styleguide: React.FC = () => {
             </Section>
             <Section title="Typography">
               <SectionItem size={6}>
-                <Typography variant="h1" color="textPrimary" gutterBottom>
+                <Typography
+                  variant="h1"
+                  color="textPrimary"
+                  style={{ margin: `${theme.spacing(2)} 0 0 0` }}
+                >
                   Aa
                 </Typography>
                 <Typography
@@ -239,7 +243,11 @@ const Styleguide: React.FC = () => {
                 >
                   H1 header
                 </Typography>
-                <Typography variant="h2" color="textPrimary" gutterBottom>
+                <Typography
+                  variant="h2"
+                  color="textPrimary"
+                  style={{ margin: `${theme.spacing(2)} 0 0 0` }}
+                >
                   Aa
                 </Typography>
                 <Typography
@@ -249,7 +257,11 @@ const Styleguide: React.FC = () => {
                 >
                   H2 header
                 </Typography>
-                <Typography variant="h3" color="textPrimary" gutterBottom>
+                <Typography
+                  variant="h3"
+                  color="textPrimary"
+                  style={{ margin: `${theme.spacing(2)} 0 0 0` }}
+                >
                   Aa
                 </Typography>
                 <Typography
